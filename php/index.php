@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script type="text/javascript" src="../script/jquery.js"></script>
-		<script type="text/javascript" src="../script/index.js"></script>
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
 		<link type="text/css" rel="stylesheet" href="../css/index.css">
 		<title>CheckDay</title>
@@ -31,15 +29,17 @@
 
 		<div class="formadd col-md-3 col-md-offset-1">
 			<form action="add.php" method="POST">
-				Nom de l'article :<br></br>
+				Type de la Dépense :<br></br>
 				<input type="text" name="name"><br></br>
-				Prix de l'article :<br></br>
+				Prix de la Dépense :<br></br>
 				<input type="text" name="cost"><br></br>
 				<input type="submit" value="Ajouter !">
 			</form>
 		</div>
 
 		<div class="main col-md-4"i>
+			Liste des Dépenses :
+			<br></br>
 <!-- Showing Process -->
 			<?php
 				$total = 0;
@@ -47,6 +47,7 @@
     		$calls = $bdd->query($selection);
 				foreach ($calls as $call) {
 					echo "<strong>Article : </strong>" . $call["name"] . " /<strong> Prix</strong> : " . $call["cost"] . " €";
+					echo "<a href=\"dropthis.php?thing=".$call["name"]."\"><img class=\"close\" src=\"../img/close.jpg\"></a>";
 					echo "<br></br>";
 					$total = $total + $call["cost"];
 				}
@@ -54,12 +55,14 @@
 <!-- END -->
 		</div>
 		<div class="result col-md-3">
-			<?php echo "Total : " . $total . " €";?>
+			<strong><?php echo "Total : " . $total . " €";?></strong>
 			<br></br>
 			<a href="./delete.php">Effacer Tout</a>
 		</div>
 		
-		<div class=" col-md-10 col-md-offset-1 footer"></div>
+		<div class=" col-md-10 col-md-offset-1 footer">
+			<h3><i>Alfeo</i></h3>
+		</div>
 		<div class="empt col-md-12"></div>
 	</body>
 </html>
