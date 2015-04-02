@@ -10,13 +10,20 @@
 <!-- END -->
 
 <!-- Adding Process -->
+
 <?php
-	$request = $bdd->prepare("INSERT INTO price (name, cost) VALUES (?, ?)");
-	$first = $_POST["name"];
-	$second = $_POST["cost"];
-	$request->bindParam(1, $first);
-	$request->bindParam(2, $second);
-	$request->execute();
-	header('Location: index.php');
+	if ($_POST["cost"] != 0) {
+		$request = $bdd->prepare("INSERT INTO price (name, cost) VALUES (?, ?)");
+		$first = $_POST["name"];
+		$second = $_POST["cost"];
+		$request->bindParam(1, $first);
+		$request->bindParam(2, $second);
+		$request->execute();
+		header('Location: index.php');
+	}
+	else {
+		header('Location: index.php');
+	}
+
 ?>
 <!-- END -->
