@@ -38,5 +38,7 @@
 			}
 			echo "Total : " . $total . " €";
 		?>
+		
+		<a href="./delete.php">Delete</a>
 	</body>
 </html>
