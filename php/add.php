@@ -1,3 +1,4 @@
+<!-- DB Connecting Process -->
 <?php
 	try {
 		$bdd = new PDO('mysql:host=localhost;dbname=checkday', 'root', 'Rabbit');
@@ -6,7 +7,9 @@
 		die('Erreur : ' . $e->getMessage());
 	}
 ?>
+<!-- END -->
 
+<!-- Adding Process -->
 <?php
 	$request = $bdd->prepare("INSERT INTO price (name, cost) VALUES (?, ?)");
 	$first = $_POST["name"];
@@ -14,5 +17,6 @@
 	$request->bindParam(1, $first);
 	$request->bindParam(2, $second);
 	$request->execute();
-	header('Location: checkday.php');
+	header('Location: index.php');
 ?>
+<!-- END -->
